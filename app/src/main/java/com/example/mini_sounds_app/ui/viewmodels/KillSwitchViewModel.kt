@@ -1,38 +1,22 @@
 package com.example.mini_sounds_app.ui.viewmodels
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.example.mini_sounds_app.api.RemoteConfigRepository
-import com.example.mini_sounds_app.ui.models.RemoteConfig
+import com.example.mini_sounds_app.service.RemoteConfigService
 import com.example.mini_sounds_app.ui.models.RemoteConfigStatus
-import com.example.mini_sounds_app.util.Resource
-import kotlinx.coroutines.launch
-import retrofit2.Response
 
-class KillSwitchViewModel(private val remoteConfigRepository: RemoteConfigRepository): ViewModel() {
-    private lateinit var remoteConfig: RemoteConfig
-    var status: RemoteConfigStatus? = null
+class KillSwitchViewModel(private val remoteConfigService: RemoteConfigService): ViewModel() {
 
-    init {
-        getRemoteConfigStatus()
-    }
+    private lateinit var status: RemoteConfigStatus
 
-    private fun getRemoteConfigStatus() {
-        viewModelScope.launch {
-            val response = remoteConfigRepository.getRemoteConfig()
-            status = handleRemoteConfigResponse(response).data?.status
+    fun getStatus(): RemoteConfigStatus {
+        val data = remoteConfigService.getRemoteConfig()
+        data?.let { config ->
+            status = config.status
         }
+        return status
     }
 
-    private fun handleRemoteConfigResponse(response: Response<RemoteConfig>): Resource<RemoteConfig> {
-        viewModelScope.launch {
-            if(response.isSuccessful) {
-                response.body()?.let {
-                    remoteConfig = it
-                    Resource.Success(remoteConfig.status)
-                }
-            }
-        }
-        return Resource.Error(response.message())
-    }
+
+
+
 }

@@ -29,6 +29,7 @@ class KillSwitchFragment: Fragment() {
 
     fun setStatusTitle(view: View) {
         val statusTitle = view.findViewById<TextView>(R.id.app_killed_title)
-        statusTitle.text = viewModel.status?.title
+        val status = viewModel.getStatus()
+        statusTitle.text = status.title
     }
 }
