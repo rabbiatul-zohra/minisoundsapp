@@ -1,6 +1,6 @@
-package com.example.mini_sounds_app.api
+package com.project.minisoundsapp.api
 
-import com.example.mini_sounds_app.util.Constants.Companion.BASE_URL
+import com.project.minisoundsapp.util.Constants.Companion.BASE_URL
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

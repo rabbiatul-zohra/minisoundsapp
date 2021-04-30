@@ -1,4 +1,4 @@
-package com.example.mini_sounds_app
+package com.project.minisoundsapp
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

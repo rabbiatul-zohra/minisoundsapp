@@ -1,8 +1,8 @@
-package com.example.mini_sounds_app.service
+package com.project.minisoundsapp.service
 
-import com.example.mini_sounds_app.api.RemoteConfigRepository
-import com.example.mini_sounds_app.ui.models.RemoteConfig
-import com.example.mini_sounds_app.util.Resource
+import com.project.minisoundsapp.api.RemoteConfigRepository
+import com.project.minisoundsapp.ui.models.RemoteConfig
+import com.project.minisoundsapp.util.Resource
 import retrofit2.Response
 
 class RemoteConfigService(private val remoteConfigRepository: RemoteConfigRepository) {

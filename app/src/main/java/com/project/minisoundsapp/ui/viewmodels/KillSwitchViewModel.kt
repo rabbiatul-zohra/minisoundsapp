@@ -1,8 +1,8 @@
-package com.example.mini_sounds_app.ui.viewmodels
+package com.project.minisoundsapp.ui.viewmodels
 
 import androidx.lifecycle.ViewModel
-import com.example.mini_sounds_app.service.RemoteConfigService
-import com.example.mini_sounds_app.ui.models.RemoteConfigStatus
+import com.project.minisoundsapp.service.RemoteConfigService
+import com.project.minisoundsapp.ui.models.RemoteConfigStatus
 import kotlinx.coroutines.runBlocking
 
 class KillSwitchViewModel(private val remoteConfigService: RemoteConfigService): ViewModel() {

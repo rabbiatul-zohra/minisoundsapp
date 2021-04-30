@@ -1,4 +1,4 @@
-package com.example.mini_sounds_app.api
+package com.project.minisoundsapp.api
 
 class RemoteConfigRepository {
     suspend fun getRemoteConfig() = RetrofitInstance.remoteConfig.getRemoteConfig()

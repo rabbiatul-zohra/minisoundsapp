@@ -1,6 +1,6 @@
-package com.example.mini_sounds_app.api
+package com.project.minisoundsapp.api
 
-import com.example.mini_sounds_app.ui.models.RemoteConfig
+import com.project.minisoundsapp.ui.models.RemoteConfig
 import retrofit2.Response
 import retrofit2.http.GET
 

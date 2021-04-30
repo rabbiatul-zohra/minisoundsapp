@@ -1,4 +1,4 @@
-package com.example.mini_sounds_app.ui.models
+package com.project.minisoundsapp.ui.models
 
 data class RemoteConfigStatus(
     val on: String,

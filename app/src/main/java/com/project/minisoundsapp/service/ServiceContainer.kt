@@ -1,6 +1,6 @@
-package com.example.mini_sounds_app.service
+package com.project.minisoundsapp.service
 
-import com.example.mini_sounds_app.api.RemoteConfigRepository
+import com.project.minisoundsapp.api.RemoteConfigRepository
 
 class ServiceContainer(
         val remoteConfigService: RemoteConfigService

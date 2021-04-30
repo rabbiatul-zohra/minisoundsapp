@@ -1,4 +1,4 @@
-package com.example.mini_sounds_app.util
+package com.project.minisoundsapp.util
 
 class Constants {
     companion object {

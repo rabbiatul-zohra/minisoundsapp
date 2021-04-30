@@ -1,4 +1,4 @@
-package com.example.mini_sounds_app
+package com.project.minisoundsapp
 
 import org.junit.Test
 
