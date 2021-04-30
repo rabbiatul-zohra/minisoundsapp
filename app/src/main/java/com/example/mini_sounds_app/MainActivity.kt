@@ -20,7 +20,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
         viewModel = createViewModelProviderFactory().get(KillSwitchViewModel::class.java)
 
         val manager: FragmentManager = supportFragmentManager
