@@ -18,7 +18,8 @@ class RemoteConfigService(private val remoteConfigRepository: RemoteConfigReposi
             response.body()?.let {
                 remoteConfig = it
             }
+            return Resource.Success(remoteConfig)
         }
-        return Resource.Success(remoteConfig)
+        return Resource.Error(response.message())
     }
 }
