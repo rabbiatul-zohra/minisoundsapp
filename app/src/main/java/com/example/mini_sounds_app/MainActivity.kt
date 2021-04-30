@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.mini_sounds_app.api.RemoteConfigRepository
 import com.example.mini_sounds_app.fragments.KillSwitchFragment
 import com.example.mini_sounds_app.service.RemoteConfigService
+import com.example.mini_sounds_app.service.ServiceContainer
 import com.example.mini_sounds_app.ui.ViewModelProviderFactory
 import com.example.mini_sounds_app.ui.viewmodels.KillSwitchViewModel
 
@@ -19,10 +20,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val remoteConfigRepository = RemoteConfigRepository()
-        val remoteConfigService = RemoteConfigService(remoteConfigRepository)
-        val viewModelProviderFactory = ViewModelProviderFactory(remoteConfigService)
-        viewModel = ViewModelProvider(this, viewModelProviderFactory).get(KillSwitchViewModel::class.java)
+
+        viewModel = createViewModelProviderFactory().get(KillSwitchViewModel::class.java)
 
         val manager: FragmentManager = supportFragmentManager
         val fragment= KillSwitchFragment()
@@ -30,6 +29,11 @@ class MainActivity : AppCompatActivity() {
         transaction.replace(R.id.fragment_layout, fragment).addToBackStack(null)
         transaction.commit()
 
+    }
 
+    private fun createViewModelProviderFactory(): ViewModelProvider {
+        val serviceFactory = ServiceContainer.Factory.create()
+        val viewModelProviderFactory = ViewModelProviderFactory(serviceFactory.remoteConfigService)
+        return ViewModelProvider(this, viewModelProviderFactory)
     }
 }
