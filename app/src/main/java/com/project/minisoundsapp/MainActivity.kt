@@ -23,9 +23,10 @@ class MainActivity : AppCompatActivity() {
         val manager: FragmentManager = supportFragmentManager
         val fragment= KillSwitchFragment()
         val transaction: FragmentTransaction = manager.beginTransaction()
-        transaction.replace(R.id.fragment_layout, fragment).addToBackStack(null)
-        transaction.commit()
-
+        if(viewModel.getStatus().on == "false") {
+            transaction.replace(R.id.fragment_layout, fragment).addToBackStack(null)
+            transaction.commit()
+        }
     }
 
     private fun createViewModelProviderFactory(): ViewModelProvider {
