@@ -19,7 +19,16 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         viewModel = createViewModelProviderFactory().get(KillSwitchViewModel::class.java)
+        inflateKillSwitchFragment()
+    }
 
+    private fun createViewModelProviderFactory(): ViewModelProvider {
+        val serviceFactory = ServiceContainer.Factory.create()
+        val viewModelProviderFactory = ViewModelProviderFactory(serviceFactory.remoteConfigService)
+        return ViewModelProvider(this, viewModelProviderFactory)
+    }
+
+    private fun inflateKillSwitchFragment() {
         val manager: FragmentManager = supportFragmentManager
         val fragment= KillSwitchFragment()
         val transaction: FragmentTransaction = manager.beginTransaction()
@@ -27,11 +36,5 @@ class MainActivity : AppCompatActivity() {
             transaction.replace(R.id.fragment_layout, fragment).addToBackStack(null)
             transaction.commit()
         }
-    }
-
-    private fun createViewModelProviderFactory(): ViewModelProvider {
-        val serviceFactory = ServiceContainer.Factory.create()
-        val viewModelProviderFactory = ViewModelProviderFactory(serviceFactory.remoteConfigService)
-        return ViewModelProvider(this, viewModelProviderFactory)
     }
 }
